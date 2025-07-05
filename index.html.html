@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LION Sinyal Botu | Kripto Piyasasında Avantaj Sağlayın</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #6a0dad;
+            --secondary: #a259d6;
+            --accent: #ffd700;
+            --dark: #0d0d0d;
+            --darker: #080808;
+            --light: #f5f5f5;
+            --dark-bg: linear-gradient(135deg, #080808 0%, #0d0d0d 100%);
+            --light-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --dark-card: rgba(26, 26, 26, 0.8);
+            --light-card: rgba(255, 255, 255, 0.9);
+            --dark-text: #f5f5f5;
+            --light-text: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.3s ease, color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--dark-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            font-size: 0.95rem;
+        }
+        
+        body.light {
+            background: var(--light-bg);
+            color: var(--light-text);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 8px 20px rgba(106, 13, 173, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(106, 13, 173, 0.6);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-secondary {
+            background: #2d3748;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .btn-secondary:hover {
+            background: #4a5568;
+        }
+        
+        .feature-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .light .feature-card {
+            background: var(--light-card);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--light-text);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: translateX(-100%);
+            transition: transform 0.4s ease-out;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(106, 13, 173, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        
+        .light .hero-title {
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 35px;
+        }
+        
+        .light .hero-subtitle {
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .canvas-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .light .feature-title {
+            color: var(--primary);
+        }
+        
+        .feature-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .light .feature-description {
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .cta-section {
+            background: linear-gradient(to right, rgba(106, 13, 173, 0.2), rgba(162, 89, 214, 0.2));
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .light .cta-section {
+            background: linear-gradient(to right, rgba(106, 13, 173, 0.1), rgba(162, 89, 214, 0.1));
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+        
+        .light .cta-title {
+            color: var(--primary);
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .light .cta-subtitle {
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Theme Toggler */
+        .theme-toggler {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .light .theme-toggler {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-toggler:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-toggler i {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .canvas-container {
+                width: 100%;
+                height: 50vh;
+                position: relative;
+                margin-top: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Lion Stats */
+        .lion-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 25px;
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 15px;
+            min-width: 180px;
+            margin: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .light .stat-card {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Payment Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: var(--dark-card);
+            border-radius: 18px;
+            padding: 35px;
+            max-width: 550px;
+            width: 90%;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .light .modal-content {
+            background: var(--light-card);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--accent);
+        }
+        
+        .payment-address {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            margin: 18px 0;
+            font-family: monospace;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+        
+        .light .payment-address {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        /* TradingView Chart */
+        .tradingview-widget-container {
+            height: 500px;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        /* KVKK Section */
+        .kvkk-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 18px;
+            margin-top: 40px;
+        }
+        
+        .light .kvkk-section {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .kvkk-title {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        
+        .kvkk-content {
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 18px;
+            font-size: 0.9rem;
+        }
+        
+        .kvkk-content p {
+            margin-bottom: 12px;
+        }
+        
+        /* Floating Lion Head */
+        .floating-lion {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            font-size: 12rem;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        /* New: Animated Gradient Border */
+        .gradient-border {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: gradientRotate 3s linear infinite;
+        }
+        
+        @keyframes gradientRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Comment Form */
+        .comment-form {
+            background: var(--dark-card);
+            border-radius: 18px;
+            padding: 35px;
+            margin-top: 40px;
+        }
+        
+        .light .comment-form {
+            background: var(--light-card);
+        }
+        
+        .form-title {
+            font-size: 1.6rem;
+            margin-bottom: 22px;
+            color: var(--accent);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+        
+        .light .form-input, .light .form-textarea {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--light-text);
+        }
+        
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        
+        /* New: Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu-btn i {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 12px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+        
+        .close-mobile-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 1.8rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .floating-lion {
+                display: none;
+            }
+        }
+        
+        /* New: Feature Highlights */
+        .highlight {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* TradingView Tabs */
+        .trading-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--dark-text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 25px;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        /* Disclaimer */
+        .disclaimer {
+            padding: 30px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 15px;
+            margin: 40px 0 0;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .light .disclaimer {
+            background: rgba(255, 0, 0, 0.08);
+        }
+        
+        .disclaimer-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ff0000;
+            font-size: 1.1rem;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 100px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .light .lang-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: var(--accent);
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <div class="lang-btn active" data-lang="tr">TR</div>
+        <div class="lang-btn" data-lang="en">EN</div>
+        <div class="lang-btn" data-lang="ru">RU</div>
+    </div>
+    
+    <!-- Theme Toggler -->
+    <div class="theme-toggler" id="themeToggler">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-mobile-menu" id="closeMobileMenu">&times;</span>
+        <a href="#features" data-i18n="menuFeatures">Özellikler</a>
+        <a href="#pricing" data-i18n="menuPricing">Paketler</a>
+        <a href="#trading" data-i18n="menuTrading">Canlı Grafik</a>
+        <a href="#comments" data-i18n="menuComments">Yorum Ekle</a>
+        <a href="#kvkk" data-i18n="menuKvkk">KVKK</a>
+        <a href="#cta" data-i18n="menuCta">Başlayın</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-i18n="heroTitle">LION Sinyal Botu: <span class="highlight">Kripto Piyasasında Avantaj Sağlayın!</span></h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">
+                    Kripto para piyasalarının karmaşıklığı ve hızı karşısında doğru kararları almakta zorlanıyor musunuz? Sürekli ekran başında kalmaktan yoruldunuz mu? LION Sinyal Botu, piyasadaki en değerli fırsatları sizin için yakalamak üzere tasarlandı!
+                </p>
+                
+                <div class="flex flex-wrap gap-3">
+                    <a href="#pricing" class="btn btn-primary" data-i18n="heroBtnPricing">Paketleri İnceleyin</a>
+                    <a href="#trading" class="btn btn-outline" data-i18n="heroBtnChart">Canlı Grafikleri Görüntüle</a>
+                </div>
+                
+                <div class="lion-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label" data-i18n="statAccuracy">Doğruluk Oranı</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label" data-i18n="statScanning">Kesintisiz Tarama</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1.5s</div>
+                        <div class="stat-label" data-i18n="statSpeed">Sinyal Hızı</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3D Animation Canvas -->
+        <div class="canvas-container">
+            <canvas id="threeJsCanvas"></canvas>
+        </div>
+        
+        <!-- Floating Lion Head -->
+        <div class="floating-lion">
+            <i class="fas fa-lion"></i>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="featuresTitle">Neden <span class="highlight">LION</span> Sinyal Botu?</h2>
+            
+            <div class="feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature1Title">Gerçek Zamanlı Fırsatlar</h3>
+                    <p class="feature-description" data-i18n="feature1Desc">
+                        OKX ve Binance gibi önde gelen borsalardan anlık veri akışıyla, piyasadaki en güncel sinyallere saniyeler içinde ulaşın.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature2Title">Akıllı Sinyal Tespiti</h3>
+                    <p class="feature-description" data-i18n="feature2Desc">
+                        Gelişmiş "LION Stratejisi" sayesinde, potansiyeli yüksek alım ve satım fırsatları otomatik olarak belirlenir.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature3Title">Çoklu Zaman Dilimi Desteği</h3>
+                    <p class="feature-description" data-i18n="feature3Desc">
+                        15 dakikadan 1 güne kadar geniş bir zaman dilimi yelpazesinde tarama yaparak, tercih ettiğiniz ticaret stiline uygun fırsatları kaçırmayın.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature4Title">Görsel ve Anlaşılır Bildirimler</h3>
+                    <p class="feature-description" data-i18n="feature4Desc">
+                        Tespit edilen her sinyal, doğrudan grafiğin üzerine işlenmiş kritik bilgilerle Telegram'ınıza gönderilir.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature5Title">Risk Yönetimi Odaklı</h3>
+                    <p class="feature-description" data-i18n="feature5Desc">
+                        Minimum Risk/Ödül oranı filtrelemesi sayesinde, sadece potansiyel kazancı riski karşılayan sinyalleri alırsınız.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature6Title">Bildirim Yorgunluğuna Son</h3>
+                    <p class="feature-description" data-i18n="feature6Desc">
+                        Akıllı soğuma süresi özelliği sayesinde, aynı sinyallerin tekrar tekrar gönderilmesi engellenir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="pricingTitle">Paketler ve <span class="highlight">Ödeme</span></h2>
+            
+            <div class="feature-grid">
+                <!-- Basic Package -->
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="packageBasicTitle">Basit Paket</h3>
+                    <p class="feature-description" data-i18n="packageBasicDesc">
+                        Başlangıç seviyesi için ideal paket
+                    </p>
+                    <div class="stat-value">1 USDT</div>
+                    
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packageBasicFeature1">OKX ve Binance Desteği</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packageBasicFeature2">15m & 4s Zaman Dilimi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packageBasicFeature3">Temel Risk Yönetimi</span>
+                        </li>
+                        <li class="flex items-center text-gray-500">
+                            <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                            <span data-i18n="packageBasicFeature4">Gelişmiş LION Stratejisi</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn btn-primary w-full mt-6" onclick="openPaymentModal('Basit Paket', 1)" data-i18n="packageBasicBtn">
+                        Satın Al - 1 USDT
+                    </button>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="packagePremiumTitle">Premium Paket</h3>
+                    <p class="feature-description" data-i18n="packagePremiumDesc">
+                        Profesyonel tüccarlar için gelişmiş özellikler
+                    </p>
+                    <div class="stat-value">5 USDT</div>
+                    
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packagePremiumFeature1">Tüm Zaman Dilimleri</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packagePremiumFeature2">Gelişmiş LION Stratejisi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packagePremiumFeature3">Öncelikli Destek</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span data-i18n="packagePremiumFeature4">VIP Sinyaller</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn btn-primary w-full mt-6" onclick="openPaymentModal('Premium Paket', 5)" data-i18n="packagePremiumBtn">
+                        Satın Al - 5 USDT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TradingView Chart -->
+    <section id="trading" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="tradingTitle">Canlı Kripto <span class="highlight">Piyasaları</span></h2>
+            
+            <div class="trading-tabs">
+                <button class="tab-btn active" onclick="switchChart('BTC')" data-i18n="tabBtc">BTC/USDT</button>
+                <button class="tab-btn" onclick="switchChart('ETH')" data-i18n="tabEth">ETH/USDT</button>
+                <button class="tab-btn" onclick="switchChart('BNB')" data-i18n="tabBnb">BNB/USDT</button>
+                <button class="tab-btn" onclick="switchChart('SOL')" data-i18n="tabSol">SOL/USDT</button>
+            </div>
+            
+            <div class="tradingview-widget-container">
+                <div id="tradingview-chart"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comment Form Section -->
+    <section id="comments" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="commentsTitle">Görüşlerinizi <span class="highlight">Paylaşın</span></h2>
+            
+            <div class="comment-form">
+                <h3 class="form-title" data-i18n="formTitle">Yorum Ekleyin</h3>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label" data-i18n="formName">İsim</label>
+                        <input type="text" id="name" class="form-input" placeholder="İsminiz" required data-i18n-placeholder="formNamePlaceholder">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-i18n="formEmail">E-posta (isteğe bağlı)</label>
+                        <input type="email" id="email" class="form-input" placeholder="email@ornek.com" data-i18n-placeholder="formEmailPlaceholder">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment" class="form-label" data-i18n="formComment">Yorumunuz</label>
+                        <textarea id="comment" class="form-textarea" placeholder="Görüşlerinizi buraya yazın..." required data-i18n-placeholder="formCommentPlaceholder"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" data-i18n="formSubmitBtn">
+                            <i class="fas fa-paper-plane mr-2"></i> Yorum Gönder
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- KVKK Section -->
+    <section id="kvkk" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="kvkkTitle">KVKK (Kişisel Verilerin Korunması)</h2>
+            
+            <div class="kvkk-section">
+                <h3 class="kvkk-title" data-i18n="kvkkSubtitle">Kişisel Verilerin Korunması Kanunu</h3>
+                <div class="kvkk-content" data-i18n="kvkkContent">
+                    <p>LION Sinyal Botu olarak, kişisel verilerinizin güvenliğine büyük önem vermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında aşağıdaki bilgileri sunmaktayız:</p>
+                    
+                    <p><strong>Veri Sorumlusu:</strong> LION Sinyal Botu hizmetlerini sunan taraf, kişisel verilerinizin veri sorumlusu olarak hareket etmektedir.</p>
+                    
+                    <p><strong>Toplanan Kişisel Veriler:</strong> Hizmetlerimizi sağlamak amacıyla, kullanıcı adı, e-posta adresi, IP adresi ve kullanım verileri gibi sınırlı kişisel veriler toplamaktayız.</p>
+                    
+                    <p><strong>Veri İşleme Amaçları:</strong> Toplanan kişisel veriler, hizmetlerimizi sağlamak, geliştirmek, kullanıcı deneyimini iyileştirmek ve yasal yükümlülükleri yerine getirmek amacıyla işlenmektedir.</p>
+                    
+                    <p><strong>Veri Güvenliği:</strong> Kişisel verilerinizin güvenliğini sağlamak için uygun teknik ve idari önlemleri almaktayız. Verileriniz yetkisiz erişim, ifşa, değişiklik veya imhadan korunmaktadır.</p>
+                    
+                    <p><strong>Verilerin Aktarımı:</strong> Kişisel verileriniz, yasal yükümlülükler dışında üçüncü taraflarla paylaşılmamaktadır.</p>
+                    
+                    <p><strong>Veri Saklama Süresi:</strong> Kişisel verileriniz, hizmetlerimizi sağlamak için gerekli olan süre boyunca saklanmaktadır. Yasal saklama yükümlülükleri dışında, verileriniz hizmet ilişkimizin sona ermesinden sonra silinmekte veya anonim hale getirilmektedir.</p>
+                    
+                    <p><strong>Haklarınız:</strong> KVKK kapsamında, kişisel verilerinizle ilgili olarak bilgi alma, erişme, düzeltme, silme, işleme kısıtlama getirme, itiraz etme ve veri taşınabilirliği talep etme haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz.</p>
+                    
+                    <p><strong>İletişim:</strong> Kişisel verilerinizle ilgili her türlü soru ve talebiniz için <a href="https://t.me/finanslion" class="text-blue-400" target="_blank">Telegram kanalımız</a> veya <a href="https://twitter.com/19llionn" class="text-blue-400" target="_blank">Twitter hesabımız</a> üzerinden bize ulaşabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title" data-i18n="ctaTitle">LION Sinyal Botu ile Kripto Ticaretinizi Bir Üst Seviyeye Taşıyın!</h2>
+            <p class="cta-subtitle" data-i18n="ctaSubtitle">
+                Piyasayı sürekli takip etme derdini bir kenara bırakın. LION Sinyal Botu, sizin için piyasayı tararken, siz de daha bilinçli ve stratejik ticaret kararları alın.
+            </p>
+            <a href="#pricing" class="btn btn-primary" data-i18n="ctaBtn">Hemen Başlayın</a>
+        </div>
+    </section>
+    
+    <!-- Disclaimer Section -->
+    <section class="section">
+        <div class="container">
+            <div class="disclaimer">
+                <h3 class="disclaimer-title" data-i18n="disclaimerTitle">YATIRIM TAVSİYESİ DEĞİLDİR</h3>
+                <p data-i18n="disclaimerText1">
+                    Bu web sitesinde yer alan tüm içerik, yorum ve veriler genel bilgilendirme amacıyla sunulmaktadır. LION Sinyal Botu tarafından sağlanan sinyaller ve bilgiler hiçbir şekilde yatırım tavsiyesi olarak değerlendirilmemelidir. Kripto para piyasaları yüksek risk içermekte olup, sermaye kaybına neden olabilir. 
+                </p>
+                <p data-i18n="disclaimerText2">
+                    Yatırım kararlarınızı vermeden önce mutlaka kendi araştırmanızı yapmanız ve gerekirse bağımsız bir finansal danışmandan profesyonel tavsiye almanız önemle tavsiye edilir. Geçmiş performans gelecekteki sonuçların garantisi değildir. Bu web sitesinde yer alan bilgilerin kullanımından doğabilecek doğrudan veya dolaylı hiçbir zarardan LION Sinyal Botu sorumlu tutulamaz.
+                </p>
+                <p data-i18n="disclaimerText3">
+                    Kripto para yatırımları, piyasa dalgalanmaları, düzenleyici değişiklikler ve teknolojik riskler gibi birçok faktörden etkilenebilir. Yatırım yapmadan önce risk profilinizi ve finansal durumunuzu dikkatlice değerlendirmeniz önemlidir.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-10 bg-black">
+        <div class="container text-center">
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="https://t.me/finanslion" target="_blank" class="text-2xl text-white hover:text-accent transition-colors" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://twitter.com/19llionn" target="_blank" class="text-2xl text-white hover:text-accent transition-colors" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <p class="text-gray-500" data-i18n="footerCopyright">© 2023 LION Sinyal Botu. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2 class="section-title" id="modalTitle" data-i18n="modalTitle">Ödeme Bilgileri</h2>
+            
+            <div class="text-center mb-6">
+                <p class="text-lg mb-4" data-i18n="modalInstruction">Lütfen aşağıdaki USDT adresine ödemenizi yapın:</p>
+                <div class="payment-address" id="usdtAddress">TE7XKqzpgFbPDmyJfxr3wrBvjbKhehkgVV</div>
+                <p class="text-sm mt-2" data-i18n="modalNetwork">Ağ: TRC20 (Tron)</p>
+                
+                <!-- QR Code Placeholder -->
+                <div class="mt-6 flex justify-center">
+                    <div class="bg-white p-4 rounded-lg">
+                        <div id="qrCode" class="w-40 h-40 flex items-center justify-center text-4xl">
+                            <i class="fas fa-qrcode text-gray-400"></i>
+                        </div>
+                        <p class="text-sm mt-2" data-i18n="modalQrText">QR Kodunu kullanarak ödeme yapın</p>
+                    </div>
+                </div>
+                
+                <p class="text-sm mt-6" data-i18n="modalContact">
+                    Ödemeniz onaylandıktan sonra Telegram'dan bize ulaşın: <a href="https://t.me/finanslion" class="text-blue-400" target="_blank">@finanslion</a>
+                </p>
+            </div>
+            
+            <div class="text-center flex flex-wrap justify-center gap-3">
+                <button class="btn btn-outline" onclick="copyAddress()" data-i18n="modalCopyBtn">
+                    <i class="fas fa-copy mr-2"></i>Adresi Kopyala
+                </button>
+                
+                <!-- Ödeme Sonrası Kapatma Butonu -->
+                <button class="btn btn-secondary" onclick="closePaymentModal()" data-i18n="modalCompleteBtn">
+                    <i class="fas fa-check-circle mr-2"></i>Ödemeyi Tamamladım
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dil ve tema yönetimi
+        const i18n = {
+            tr: {
+                // Menü
+                menuFeatures: "Özellikler",
+                menuPricing: "Paketler",
+                menuTrading: "Canlı Grafik",
+                menuComments: "Yorum Ekle",
+                menuKvkk: "KVKK",
+                menuCta: "Başlayın",
+                
+                // Hero
+                heroTitle: "LION Sinyal Botu: <span class=\"highlight\">Kripto Piyasasında Avantaj Sağlayın!</span>",
+                heroSubtitle: "Kripto para piyasalarının karmaşıklığı ve hızı karşısında doğru kararları almakta zorlanıyor musunuz? Sürekli ekran başında kalmaktan yoruldunuz mu? LION Sinyal Botu, piyasadaki en değerli fırsatları sizin için yakalamak üzere tasarlandı!",
+                heroBtnPricing: "Paketleri İnceleyin",
+                heroBtnChart: "Canlı Grafikleri Görüntüle",
+                
+                // İstatistikler
+                statAccuracy: "Doğruluk Oranı",
+                statScanning: "Kesintisiz Tarama",
+                statSpeed: "Sinyal Hızı",
+                
+                // Özellikler
+                featuresTitle: "Neden <span class=\"highlight\">LION</span> Sinyal Botu?",
+                feature1Title: "Gerçek Zamanlı Fırsatlar",
+                feature1Desc: "OKX ve Binance gibi önde gelen borsalardan anlık veri akışıyla, piyasadaki en güncel sinyallere saniyeler içinde ulaşın.",
+                feature2Title: "Akıllı Sinyal Tespiti",
+                feature2Desc: "Gelişmiş \"LION Stratejisi\" sayesinde, potansiyeli yüksek alım ve satım fırsatları otomatik olarak belirlenir.",
+                feature3Title: "Çoklu Zaman Dilimi Desteği",
+                feature3Desc: "15 dakikadan 1 güne kadar geniş bir zaman dilimi yelpazesinde tarama yaparak, tercih ettiğiniz ticaret stiline uygun fırsatları kaçırmayın.",
+                feature4Title: "Görsel ve Anlaşılır Bildirimler",
+                feature4Desc: "Tespit edilen her sinyal, doğrudan grafiğin üzerine işlenmiş kritik bilgilerle Telegram'ınıza gönderilir.",
+                feature5Title: "Risk Yönetimi Odaklı",
+                feature5Desc: "Minimum Risk/Ödül oranı filtrelemesi sayesinde, sadece potansiyel kazancı riski karşılayan sinyalleri alırsınız.",
+                feature6Title: "Bildirim Yorgunluğuna Son",
+                feature6Desc: "Akıllı soğuma süresi özelliği sayesinde, aynı sinyallerin tekrar tekrar gönderilmesi engellenir.",
+                
+                // Paketler
+                pricingTitle: "Paketler ve <span class=\"highlight\">Ödeme</span>",
+                packageBasicTitle: "Basit Paket",
+                packageBasicDesc: "Başlangıç seviyesi için ideal paket",
+                packageBasicFeature1: "OKX ve Binance Desteği",
+                packageBasicFeature2: "15m & 4s Zaman Dilimi",
+                packageBasicFeature3: "Temel Risk Yönetimi",
+                packageBasicFeature4: "Gelişmiş LION Stratejisi",
+                packageBasicBtn: "Satın Al - 1 USDT",
+                
+                packagePremiumTitle: "Premium Paket",
+                packagePremiumDesc: "Profesyonel tüccarlar için gelişmiş özellikler",
+                packagePremiumFeature1: "Tüm Zaman Dilimleri",
+                packagePremiumFeature2: "Gelişmiş LION Stratejisi",
+                packagePremiumFeature3: "Öncelikli Destek",
+                packagePremiumFeature4: "VIP Sinyaller",
+                packagePremiumBtn: "Satın Al - 5 USDT",
+                
+                // Canlı Grafik
+                tradingTitle: "Canlı Kripto <span class=\"highlight\">Piyasaları</span>",
+                tabBtc: "BTC/USDT",
+                tabEth: "ETH/USDT",
+                tabBnb: "BNB/USDT",
+                tabSol: "SOL/USDT",
+                
+                // Yorum Formu
+                commentsTitle: "Görüşlerinizi <span class=\"highlight\">Paylaşın</span>",
+                formTitle: "Yorum Ekleyin",
+                formName: "İsim",
+                formNamePlaceholder: "İsminiz",
+                formEmail: "E-posta (isteğe bağlı)",
+                formEmailPlaceholder: "email@ornek.com",
+                formComment: "Yorumunuz",
+                formCommentPlaceholder: "Görüşlerinizi buraya yazın...",
+                formSubmitBtn: "Yorum Gönder",
+                
+                // KVKK
+                kvkkTitle: "KVKK (Kişisel Verilerin Korunması)",
+                kvkkSubtitle: "Kişisel Verilerin Korunması Kanunu",
+                kvkkContent: `<p>LION Sinyal Botu olarak, kişisel verilerinizin güvenliğine büyük önem vermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında aşağıdaki bilgileri sunmaktayız:</p>
+                    
+                    <p><strong>Veri Sorumlusu:</strong> LION Sinyal Botu hizmetlerini sunan taraf, kişisel verilerinizin veri sorumlusu olarak hareket etmektedir.</p>
+                    
+                    <p><strong>Toplanan Kişisel Veriler:</strong> Hizmetlerimizi sağlamak amacıyla, kullanıcı adı, e-posta adresi, IP adresi ve kullanım verileri gibi sınırlı kişisel veriler toplamaktayız.</p>
+                    
+                    <p><strong>Veri İşleme Amaçları:</strong> Toplanan kişisel veriler, hizmetlerimizi sağlamak, geliştirmek, kullanıcı deneyimini iyileştirmek ve yasal yükümlülükleri yerine getirmek amacıyla işlenmektedir.</p>
+                    
+                    <p><strong>Veri Güvenliği:</strong> Kişisel verilerinizin güvenliğini sağlamak için uygun teknik ve idari önlemleri almaktayız. Verileriniz yetkisiz erişim, ifşa, değişiklik veya imhadan korunmaktadır.</p>
+                    
+                    <p><strong>Verilerin Aktarımı:</strong> Kişisel verileriniz, yasal yükümlülükler dışında üçüncü taraflarla paylaşılmamaktadır.</p>
+                    
+                    <p><strong>Veri Saklama Süresi:</strong> Kişisel verileriniz, hizmetlerimizi sağlamak için gerekli olan süre boyunca saklanmaktadır. Yasal saklama yükümlülükleri dışında, verileriniz hizmet ilişkimizin sona ermesinden sonra silinmekte veya anonim hale getirilmektedir.</p>
+                    
+                    <p><strong>Haklarınız:</strong> KVKK kapsamında, kişisel verilerinizle ilgili olarak bilgi alma, erişme, düzeltme, silme, işleme kısıtlama getirme, itiraz etme ve veri taşınabilirliği talep etme haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle iletişime geçebilirsiniz.</p>
+                    
+                    <p><strong>İletişim:</strong> Kişisel verilerinizle ilgili her türlü soru ve talebiniz için <a href="https://t.me/finanslion" class="text-blue-400" target="_blank">Telegram kanalımız</a> veya <a href="https://twitter.com/19llionn" class="text-blue-400" target="_blank">Twitter hesabımız</a> üzerinden bize ulaşabilirsiniz.</p>`,
+                
+                // CTA
+                ctaTitle: "LION Sinyal Botu ile Kripto Ticaretinizi Bir Üst Seviyeye Taşıyın!",
+                ctaSubtitle: "Piyasayı sürekli takip etme derdini bir kenara bırakın. LION Sinyal Botu, sizin için piyasayı tararken, siz de daha bilinçli ve stratejik ticaret kararları alın.",
+                ctaBtn: "Hemen Başlayın",
+                
+                // Uyarı
+                disclaimerTitle: "YATIRIM TAVSİYESİ DEĞİLDİR",
+                disclaimerText1: "Bu web sitesinde yer alan tüm içerik, yorum ve veriler genel bilgilendirme amacıyla sunulmaktadır. LION Sinyal Botu tarafından sağlanan sinyaller ve bilgiler hiçbir şekilde yatırım tavsiyesi olarak değerlendirilmemelidir. Kripto para piyasaları yüksek risk içermekte olup, sermaye kaybına neden olabilir.",
+                disclaimerText2: "Yatırım kararlarınızı vermeden önce mutlaka kendi araştırmanızı yapmanız ve gerekirse bağımsız bir finansal danışmandan profesyonel tavsiye almanız önemle tavsiye edilir. Geçmiş performans gelecekteki sonuçların garantisi değildir. Bu web sitesinde yer alan bilgilerin kullanımından doğabilecek doğrudan veya dolaylı hiçbir zarardan LION Sinyal Botu sorumlu tutulamaz.",
+                disclaimerText3: "Kripto para yatırımları, piyasa dalgalanmaları, düzenleyici değişiklikler ve teknolojik riskler gibi birçok faktörden etkilenebilir. Yatırım yapmadan önce risk profilinizi ve finansal durumunuzu dikkatlice değerlendirmeniz önemlidir.",
+                
+                // Footer
+                footerCopyright: "© 2023 LION Sinyal Botu. Tüm hakları saklıdır.",
+                
+                // Modal
+                modalTitle: "Ödeme Bilgileri",
+                modalInstruction: "Lütfen aşağıdaki USDT adresine ödemenizi yapın:",
+                modalNetwork: "Ağ: TRC20 (Tron)",
+                modalQrText: "QR Kodunu kullanarak ödeme yapın",
+                modalContact: "Ödemeniz onaylandıktan sonra Telegram'dan bize ulaşın:",
+                modalCopyBtn: "Adresi Kopyala",
+                modalCompleteBtn: "Ödemeyi Tamamladım"
+            },
+            en: {
+                // Menü
+                menuFeatures: "Features",
+                menuPricing: "Pricing",
+                menuTrading: "Live Chart",
+                menuComments: "Add Comment",
+                menuKvkk: "KVKK",
+                menuCta: "Get Started",
+                
+                // Hero
+                heroTitle: "LION Signal Bot: <span class=\"highlight\">Gain an Advantage in the Crypto Market!</span>",
+                heroSubtitle: "Are you struggling to make the right decisions in the face of the complexity and speed of cryptocurrency markets? Tired of constantly staying in front of the screen? The LION Signal Bot is designed to capture the most valuable opportunities in the market for you!",
+                heroBtnPricing: "View Packages",
+                heroBtnChart: "View Live Charts",
+                
+                // İstatistikler
+                statAccuracy: "Accuracy Rate",
+                statScanning: "Continuous Scanning",
+                statSpeed: "Signal Speed",
+                
+                // Özellikler
+                featuresTitle: "Why <span class=\"highlight\">LION</span> Signal Bot?",
+                feature1Title: "Real-Time Opportunities",
+                feature1Desc: "With real-time data flow from leading exchanges like OKX and Binance, access the most up-to-date signals in the market within seconds.",
+                feature2Title: "Smart Signal Detection",
+                feature2Desc: "Thanks to the advanced \"LION Strategy\", high-potential buy and sell opportunities are automatically identified.",
+                feature3Title: "Multiple Time Frame Support",
+                feature3Desc: "Scan across a wide range of time frames from 15 minutes to 1 day to not miss opportunities that suit your trading style.",
+                feature4Title: "Visual and Understandable Notifications",
+                feature4Desc: "Each detected signal is sent to your Telegram with critical information directly plotted on the chart.",
+                feature5Title: "Risk Management Focused",
+                feature5Desc: "With minimum Risk/Reward ratio filtering, you only receive signals where the potential profit justifies the risk.",
+                feature6Title: "End of Notification Fatigue",
+                feature6Desc: "The smart cooldown feature prevents the same signals from being sent repeatedly.",
+                
+                // Paketler
+                pricingTitle: "Packages and <span class=\"highlight\">Payment</span>",
+                packageBasicTitle: "Basic Package",
+                packageBasicDesc: "Ideal package for beginners",
+                packageBasicFeature1: "OKX and Binance Support",
+                packageBasicFeature2: "15m & 4h Time Frame",
+                packageBasicFeature3: "Basic Risk Management",
+                packageBasicFeature4: "Advanced LION Strategy",
+                packageBasicBtn: "Buy Now - 1 USDT",
+                
+                packagePremiumTitle: "Premium Package",
+                packagePremiumDesc: "Advanced features for professional traders",
+                packagePremiumFeature1: "All Time Frames",
+                packagePremiumFeature2: "Advanced LION Strategy",
+                packagePremiumFeature3: "Priority Support",
+                packagePremiumFeature4: "VIP Signals",
+                packagePremiumBtn: "Buy Now - 5 USDT",
+                
+                // Canlı Grafik
+                tradingTitle: "Live Crypto <span class=\"highlight\">Markets</span>",
+                tabBtc: "BTC/USDT",
+                tabEth: "ETH/USDT",
+                tabBnb: "BNB/USDT",
+                tabSol: "SOL/USDT",
+                
+                // Yorum Formu
+                commentsTitle: "Share Your <span class=\"highlight\">Opinions</span>",
+                formTitle: "Add Comment",
+                formName: "Name",
+                formNamePlaceholder: "Your Name",
+                formEmail: "Email (optional)",
+                formEmailPlaceholder: "email@example.com",
+                formComment: "Your Comment",
+                formCommentPlaceholder: "Write your opinions here...",
+                formSubmitBtn: "Submit Comment",
+                
+                // KVKK
+                kvkkTitle: "KVKK (Personal Data Protection)",
+                kvkkSubtitle: "Personal Data Protection Law",
+                kvkkContent: `<p>As LION Signal Bot, we attach great importance to the security of your personal data. Within the scope of the Personal Data Protection Law No. 6698 ("KVKK"), we present the following information:</p>
+                    
+                    <p><strong>Data Controller:</strong> The party providing LION Signal Bot services acts as the data controller for your personal data.</p>
+                    
+                    <p><strong>Personal Data Collected:</strong> To provide our services, we collect limited personal data such as username, email address, IP address, and usage data.</p>
+                    
+                    <p><strong>Purposes of Data Processing:</strong> The collected personal data is processed to provide, improve, enhance user experience of our services and fulfill legal obligations.</p>
+                    
+                    <p><strong>Data Security:</strong> We take appropriate technical and administrative measures to ensure the security of your personal data. Your data is protected from unauthorized access, disclosure, alteration, or destruction.</p>
+                    
+                    <p><strong>Data Transfer:</strong> Your personal data is not shared with third parties except for legal obligations.</p>
+                    
+                    <p><strong>Data Retention Period:</strong> Your personal data is stored for as long as necessary to provide our services. Except for legal retention obligations, your data is deleted or anonymized after the termination of our service relationship.</p>
+                    
+                    <p><strong>Your Rights:</strong> Under KVKK, you have the right to request information, access, rectification, deletion, restriction of processing, objection, and data portability regarding your personal data. You can contact us to exercise these rights.</p>
+                    
+                    <p><strong>Contact:</strong> For any questions and requests regarding your personal data, you can reach us via our <a href="https://t.me/finanslion" class="text-blue-400" target="_blank">Telegram channel</a> or <a href="https://twitter.com/19llionn" class="text-blue-400" target="_blank">Twitter account</a>.</p>`,
+                
+                // CTA
+                ctaTitle: "Take Your Crypto Trading to the Next Level with LION Signal Bot!",
+                ctaSubtitle: "Leave the hassle of constantly monitoring the market behind. While LION Signal Bot scans the market for you, you can make more informed and strategic trading decisions.",
+                ctaBtn: "Get Started",
+                
+                // Uyarı
+                disclaimerTitle: "NOT INVESTMENT ADVICE",
+                disclaimerText1: "All content, comments and data on this website are provided for general information purposes only. The signals and information provided by LION Signal Bot should not be considered as investment advice in any way. Cryptocurrency markets involve high risk and may result in capital loss.",
+                disclaimerText2: "It is strongly recommended that you do your own research and seek professional advice from an independent financial advisor before making any investment decisions. Past performance is not indicative of future results. LION Signal Bot cannot be held responsible for any direct or indirect damages arising from the use of the information on this website.",
+                disclaimerText3: "Cryptocurrency investments may be affected by many factors such as market fluctuations, regulatory changes and technological risks. It is important to carefully assess your risk profile and financial situation before investing.",
+                
+                // Footer
+                footerCopyright: "© 2023 LION Signal Bot. All rights reserved.",
+                
+                // Modal
+                modalTitle: "Payment Information",
+                modalInstruction: "Please make your payment to the USDT address below:",
+                modalNetwork: "Network: TRC20 (Tron)",
+                modalQrText: "Pay using QR code",
+                modalContact: "After your payment is confirmed, contact us on Telegram:",
+                modalCopyBtn: "Copy Address",
+                modalCompleteBtn: "Payment Completed"
+            },
+            ru: {
+                // Menü
+                menuFeatures: "Функции",
+                menuPricing: "Пакеты",
+                menuTrading: "График",
+                menuComments: "Комментарии",
+                menuKvkk: "KVKK",
+                menuCta: "Начать",
+                
+                // Hero
+                heroTitle: "LION Сигнальный Бот: <span class=\"highlight\">Получите преимущество на крипторынке!</span>",
+                heroSubtitle: "Вам сложно принимать правильные решения перед лицом сложности и скорости криптовалютных рынков? Устали постоянно находиться перед экраном? LION Signal Bot создан для того, чтобы улавливать самые выгодные возможности на рынке для вас!",
+                heroBtnPricing: "Посмотреть пакеты",
+                heroBtnChart: "Посмотреть графики",
+                
+                // İstatistikler
+                statAccuracy: "Точность",
+                statScanning: "Непрерывное сканирование",
+                statSpeed: "Скорость сигнала",
+                
+                // Özellikler
+                featuresTitle: "Почему <span class=\"highlight\">LION</span> Сигнальный Бот?",
+                feature1Title: "Возможности в режиме реального времени",
+                feature1Desc: "Благодаря потоку данных в реальном времени с ведущих бирж, таких как OKX и Binance, получайте самые актуальные сигналы на рынке за считанные секунды.",
+                feature2Title: "Умное обнаружение сигналов",
+                feature2Desc: "Благодаря продвинутой \"LION Стратегии\", возможности покупки и продажи с высоким потенциалом автоматически определяются.",
+                feature3Title: "Поддержка нескольких таймфреймов",
+                feature3Desc: "Сканируйте в широком диапазоне таймфреймов от 15 минут до 1 дня, чтобы не упустить возможности, соответствующие вашему стилю торговли.",
+                feature4Title: "Визуальные и понятные уведомления",
+                feature4Desc: "Каждый обнаруженный сигнал отправляется в ваш Telegram с критической информацией, непосредственно нанесенной на график.",
+                feature5Title: "Сфокусировано на управлении рисками",
+                feature5Desc: "Благодаря фильтрации минимального коэффициента Риск/Вознаграждение, вы получаете только те сигналы, где потенциальная прибыль оправдывает риск.",
+                feature6Title: "Конец усталости от уведомлений",
+                feature6Desc: "Умная функция охлаждения предотвращает многократную отправку одних и тех же сигналов.",
+                
+                // Paketler
+                pricingTitle: "Пакеты и <span class=\"highlight\">Оплата</span>",
+                packageBasicTitle: "Базовый пакет",
+                packageBasicDesc: "Идеальный пакет для начинающих",
+                packageBasicFeature1: "Поддержка OKX и Binance",
+                packageBasicFeature2: "Таймфреймы 15м и 4ч",
+                packageBasicFeature3: "Базовое управление рисками",
+                packageBasicFeature4: "Продвинутая LION Стратегия",
+                packageBasicBtn: "Купить - 1 USDT",
+                
+                packagePremiumTitle: "Премиум пакет",
+                packagePremiumDesc: "Расширенные функции для профессиональных трейдеров",
+                packagePremiumFeature1: "Все таймфреймы",
+                packagePremiumFeature2: "Продвинутая LION Стратегия",
+                packagePremiumFeature3: "Приоритетная поддержка",
+                packagePremiumFeature4: "VIP сигналы",
+                packagePremiumBtn: "Купить - 5 USDT",
+                
+                // Canlı Grafik
+                tradingTitle: "Живые Крипто <span class=\"highlight\">Рынки</span>",
+                tabBtc: "BTC/USDT",
+                tabEth: "ETH/USDT",
+                tabBnb: "BNB/USDT",
+                tabSol: "SOL/USDT",
+                
+                // Yorum Formu
+                commentsTitle: "Поделитесь <span class=\"highlight\">Мнением</span>",
+                formTitle: "Добавить комментарий",
+                formName: "Имя",
+                formNamePlaceholder: "Ваше имя",
+                formEmail: "Email (необязательно)",
+                formEmailPlaceholder: "email@example.com",
+                formComment: "Ваш комментарий",
+                formCommentPlaceholder: "Напишите ваше мнение здесь...",
+                formSubmitBtn: "Отправить комментарий",
+                
+                // KVKK
+                kvkkTitle: "KVKK (Защита персональных данных)",
+                kvkkSubtitle: "Закон о защите персональных данных",
+                kvkkContent: `<p>Как LION Signal Bot, мы придаем большое значение безопасности ваших персональных данных. В рамках Закона о защите персональных данных № 6698 («KVKK») мы представляем следующую информацию:</p>
+                    
+                    <p><strong>Контроллер данных:</strong> Сторона, предоставляющая услуги LION Signal Bot, действует как контроллер данных для ваших персональных данных.</p>
+                    
+                    <p><strong>Собираемые персональные данные:</strong> Для предоставления наших услуг мы собираем ограниченные персональные данные, такие как имя пользователя, адрес электронной почты, IP-адрес и данные об использовании.</p>
+                    
+                    <p><strong>Цели обработки данных:</strong> Собранные персональные данные обрабатываются для предоставления, улучшения, повышения качества обслуживания и выполнения юридических обязательств.</p>
+                    
+                    <p><strong>Безопасность данных:</strong> Мы принимаем соответствующие технические и административные меры для обеспечения безопасности ваших персональных данных. Ваши данные защищены от несанкционированного доступа, разглашения, изменения или уничтожения.</p>
+                    
+                    <p><strong>Передача данных:</strong> Ваши персональные данные не передаются третьим лицам, за исключением случаев, предусмотренных законом.</p>
+                    
+                    <p><strong>Срок хранения данных:</strong> Ваши персональные данные хранятся столько времени, сколько необходимо для предоставления наших услуг. За исключением юридических обязательств по хранению, ваши данные удаляются или анонимизируются после прекращения наших отношений по оказанию услуг.</p>
+                    
+                    <p><strong>Ваши права:</strong> В соответствии с KVKK, вы имеете право запрашивать информацию, доступ, исправление, удаление, ограничение обработки, возражение и переносимость данных в отношении ваших персональных данных. Вы можете связаться с нами, чтобы воспользоваться этими правами.</p>
+                    
+                    <p><strong>Контакты:</strong> По любым вопросам и запросам, касающимся ваших персональных данных, вы можете связаться с нами через наш <a href="https://t.me/finanslion" class="text-blue-400" target="_blank">Telegram канал</a> или <a href="https://twitter.com/19llionn" class="text-blue-400" target="_blank">Twitter аккаунт</a>.</p>`,
+                
+                // CTA
+                ctaTitle: "Поднимите свою криптоторговлю на новый уровень с LION Signal Bot!",
+                ctaSubtitle: "Оставьте позади хлопоты по постоянному мониторингу рынка. Пока LION Signal Bot сканирует рынок за вас, вы можете принимать более обоснованные и стратегические торговые решения.",
+                ctaBtn: "Начать",
+                
+                // Uyarı
+                disclaimerTitle: "НЕ ЯВЛЯЕТСЯ ИНВЕСТИЦИОННОЙ РЕКОМЕНДАЦИЕЙ",
+                disclaimerText1: "Весь контент, комментарии и данные на этом сайте предоставляются только в информационных целях. Сигналы и информация, предоставляемые LION Signal Bot, ни в коем случае не должны рассматриваться как инвестиционный совет. Криптовалютные рынки сопряжены с высоким риском и могут привести к потере капитала.",
+                disclaimerText2: "Настоятельно рекомендуется провести собственное исследование и обратиться за профессиональной консультацией к независимому финансовому консультанту перед принятием любых инвестиционных решений. Прошлые результаты не являются гарантией будущих результатов. LION Signal Bot не может нести ответственность за любой прямой или косвенный ущерб, возникший в результате использования информации на этом сайте.",
+                disclaimerText3: "Инвестиции в криптовалюты могут подвергаться влиянию многих факторов, таких как колебания рынка, изменения регулирования и технологические риски. Важно тщательно оценить ваш профиль риска и финансовое положение перед инвестированием.",
+                
+                // Footer
+                footerCopyright: "© 2023 LION Signal Bot. Все права защищены.",
+                
+                // Modal
+                modalTitle: "Информация об оплате",
+                modalInstruction: "Пожалуйста, совершите оплату на следующий USDT адрес:",
+                modalNetwork: "Сеть: TRC20 (Tron)",
+                modalQrText: "Оплатить с помощью QR-кода",
+                modalContact: "После подтверждения вашего платежа свяжитесь с нами в Telegram:",
+                modalCopyBtn: "Копировать адрес",
+                modalCompleteBtn: "Оплата завершена"
+            }
+        };
+
+        // Dil değiştirme fonksiyonu
+        function changeLanguage(lang) {
+            // Aktif dil butonunu güncelle
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Tüm çeviri öğelerini güncelle
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.innerHTML = i18n[lang][key];
+                } else {
+                    // Türkçe'ye geri dön
+                    element.innerHTML = i18n['tr'][key];
+                }
+            });
+            
+            // Placeholder'ları güncelle
+            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            placeholders.forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.setAttribute('placeholder', i18n[lang][key]);
+                } else {
+                    element.setAttribute('placeholder', i18n['tr'][key]);
+                }
+            });
+            
+            // Dil seçimini localStorage'a kaydet
+            localStorage.setItem('language', lang);
+        }
+
+        // Tema değiştirme fonksiyonu
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('light');
+                document.getElementById('themeToggler').innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('light');
+                document.getElementById('themeToggler').innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        // Sayfa yüklendiğinde tema ve dili ayarla
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tema ayarlarını yükle
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+                setTheme(systemPrefersLight ? 'light' : 'dark');
+            }
+
+            // Dil ayarlarını yükle
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                changeLanguage(savedLang);
+            } else {
+                const browserLang = navigator.language || navigator.userLanguage;
+                let lang = 'tr';
+                if (browserLang.startsWith('tr')) {
+                    lang = 'tr';
+                } else if (browserLang.startsWith('ru')) {
+                    lang = 'ru';
+                } else {
+                    lang = 'en';
+                }
+                changeLanguage(lang);
+            }
+
+            // Tema değiştiriciye tıklama olayı ekle
+            document.getElementById('themeToggler').addEventListener('click', function() {
+                const isLight = document.body.classList.contains('light');
+                setTheme(isLight ? 'dark' : 'light');
+            });
+
+            // Dil butonlarına tıklama olayı ekle
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+
+            // Diğer kodlar...
+        });
+
+        // Initialize Three.js scene
+        const canvas = document.getElementById('threeJsCanvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: canvas,
+            antialias: true,
+            alpha: true
+        });
+        
+        renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
+        
+        // Create realistic lion model
+        const createLion = () => {
+            const group = new THREE.Group();
+            
+            // Body (golden)
+            const bodyGeometry = new THREE.CapsuleGeometry(1.2, 1.5, 8, 16);
+            const bodyMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xffd700,
+                roughness: 0.3,
+                metalness: 0.7
+            });
+            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+            group.add(body);
+            
+            // Head
+            const headGeometry = new THREE.DodecahedronGeometry(0.8, 2);
+            const headMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xffd700,
+                roughness: 0.4,
+                metalness: 0.6
+            });
+            const head = new THREE.Mesh(headGeometry, headMaterial);
+            head.position.set(0, 0.2, 1.8);
+            group.add(head);
+            
+            // Mane
+            const maneGeometry = new THREE.ConeGeometry(1.0, 0.8, 16, 1, true);
+            const maneMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xd2691e,
+                roughness: 0.6,
+                metalness: 0.2
+            });
+            const mane = new THREE.Mesh(maneGeometry, maneMaterial);
+            mane.position.set(0, 0.2, 1.5);
+            mane.rotation.x = Math.PI;
+            group.add(mane);
+            
+            // Eyes
+            const eyeGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const eyeMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x000000,
+                emissive: 0x111111
+            });
+            
+            const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            leftEye.position.set(-0.25, 0.3, 2.1);
+            group.add(leftEye);
+            
+            const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            rightEye.position.set(0.25, 0.3, 2.1);
+            group.add(rightEye);
+            
+            // Nose
+            const noseGeometry = new THREE.SphereGeometry(0.15, 16, 16);
+            const noseMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x000000,
+                roughness: 0.9,
+                metalness: 0.1
+            });
+            const nose = new THREE.Mesh(noseGeometry, noseMaterial);
+            nose.position.set(0, -0.1, 2.2);
+            group.add(nose);
+            
+            // Legs
+            const legGeometry = new THREE.CylinderGeometry(0.15, 0.15, 1.2, 16);
+            const legMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xffd700,
+                roughness: 0.3,
+                metalness: 0.7
+            });
+            
+            const positions = [
+                [-0.5, -1.5, 0.5],
+                [0.5, -1.5, 0.5],
+                [-0.5, -1.5, -0.5],
+                [0.5, -1.5, -0.5]
+            ];
+            
+            positions.forEach(pos => {
+                const leg = new THREE.Mesh(legGeometry, legMaterial);
+                leg.position.set(pos[0], pos[1], pos[2]);
+                leg.rotation.x = Math.PI / 2;
+                group.add(leg);
+            });
+            
+            // Tail
+            const tailGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.5, 16);
+            const tail = new THREE.Mesh(tailGeometry, legMaterial);
+            tail.position.set(0, 0, -1.8);
+            tail.rotation.x = Math.PI / 4;
+            tail.rotation.z = Math.PI / 8;
+            group.add(tail);
+            
+            // Tail tip
+            const tailTipGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const tailTip = new THREE.Mesh(tailTipGeometry, new THREE.MeshStandardMaterial({ 
+                color: 0xd2691e,
+                roughness: 0.6,
+                metalness: 0.2
+            }));
+            tailTip.position.set(0.2, -0.3, -2.5);
+            group.add(tailTip);
+            
+            return group;
+        };
+        
+        // Add lion to the scene
+        const lion = createLion();
+        scene.add(lion);
+        
+        // Create professional background
+        const createBackground = () => {
+            // Create a large sphere for the sky
+            const skyGeometry = new THREE.SphereGeometry(500, 32, 32);
+            const skyMaterial = new THREE.MeshBasicMaterial({
+                color: 0x000022,
+                side: THREE.BackSide
+            });
+            const sky = new THREE.Mesh(skyGeometry, skyMaterial);
+            scene.add(sky);
+            
+            // Add stars
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1.5,
+                sizeAttenuation: false
+            });
+            
+            const starsVertices = [];
+            for (let i = 0; i < 10000; i++) {
+                const x = THREE.MathUtils.randFloatSpread(1000);
+                const y = THREE.MathUtils.randFloatSpread(1000);
+                const z = THREE.MathUtils.randFloatSpread(1000);
+                starsVertices.push(x, y, z);
+            }
+            
+            starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+            const stars = new THREE.Points(starsGeometry, starsMaterial);
+            scene.add(stars);
+            
+            // Add ground plane
+            const groundGeometry = new THREE.PlaneGeometry(1000, 1000);
+            const groundMaterial = new THREE.MeshStandardMaterial({
+                color: 0x111111,
+                roughness: 0.8,
+                metalness: 0.2
+            });
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            ground.position.y = -2;
+            scene.add(ground);
+        };
+        
+        createBackground();
+        
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(5, 10, 7);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+        
+        const pointLight = new THREE.PointLight(0xffffff, 0.8);
+        pointLight.position.set(-5, 5, 5);
+        pointLight.castShadow = true;
+        scene.add(pointLight);
+        
+        const backLight = new THREE.PointLight(0x4455ff, 0.5);
+        backLight.position.set(0, 5, -5);
+        scene.add(backLight);
+        
+        // Position the camera
+        camera.position.z = 5;
+        camera.position.y = 1.5;
+        
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate the lion
+            lion.rotation.y += 0.01;
+            
+            // Make the tail wag
+            const tail = lion.children[lion.children.length - 2];
+            tail.rotation.z = Math.PI / 8 + Math.sin(Date.now() * 0.005) * 0.2;
+            
+            // Make the head nod slightly
+            const head = lion.children[1];
+            head.rotation.x = Math.sin(Date.now() * 0.003) * 0.1;
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // Resize handler
+        window.addEventListener('resize', function() {
+            camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Payment Modal Functions
+        function openPaymentModal(packageName, price) {
+            document.getElementById('modalTitle').textContent = `${packageName} - ${price} USDT`;
+            document.getElementById('paymentModal').classList.add('active');
+            
+            // Generate QR code (simulated)
+            const qrCode = document.getElementById('qrCode');
+            qrCode.innerHTML = '<i class="fas fa-qrcode text-gray-400"></i>';
+        }
+        
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+        
+        function copyAddress() {
+            const address = document.getElementById('usdtAddress').textContent;
+            navigator.clipboard.writeText(address)
+                .then(() => {
+                    alert('USDT adresi panoya kopyalandı: ' + address);
+                })
+                .catch(err => {
+                    console.error('Kopyalama işlemi başarısız: ', err);
+                });
+        }
+        
+        // TradingView Widget
+        function loadTradingViewWidget(symbol) {
+            const container = document.getElementById('tradingview-chart');
+            container.innerHTML = '';
+            
+            const script = document.createElement('script');
+            script.src = 'https://s3.tradingview.com/tv.js';
+            script.onload = function() {
+                new TradingView.widget({
+                    "width": "100%",
+                    "height": "500",
+                    "symbol": symbol,
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "tr",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_top_toolbar": false,
+                    "hide_legend": false,
+                    "save_image": false,
+                    "container_id": "tradingview-chart"
+                });
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Switch chart function
+        function switchChart(coin) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Load chart
+            switch(coin) {
+                case 'BTC':
+                    loadTradingViewWidget('BINANCE:BTCUSDT');
+                    break;
+                case 'ETH':
+                    loadTradingViewWidget('BINANCE:ETHUSDT');
+                    break;
+                case 'BNB':
+                    loadTradingViewWidget('BINANCE:BNBUSDT');
+                    break;
+                case 'SOL':
+                    loadTradingViewWidget('BINANCE:SOLUSDT');
+                    break;
+            }
+        }
+        
+        // Comment form submission
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value || 'Belirtilmemiş';
+            const comment = document.getElementById('comment').value;
+            
+            // Show success message
+            alert(`Teşekkürler ${name}! Yorumunuz başarıyla alındı.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Load TradingView on page load
+        window.onload = function() {
+            loadTradingViewWidget('BINANCE:BTCUSDT');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
